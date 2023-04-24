@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>
+                spring-to-quarkus-todo -
+            Issues
+        </title>
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+        <link href="resources/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="resources/css/windup.css" rel="stylesheet" media="screen">
+        <link href="resources/css/windup.java.css" rel="stylesheet" media="screen">
+        <link href="resources/css/jquery-ui.min.css" rel="stylesheet" media="screen">
+
+<link href="resources/img/TACKLE/favicon.png" rel="shortcut icon" type="image/x-icon"/>
+        <style>
+            .table-bordered { border: 1px solid #222222;  border-collapse: collapse;}
+
+            .table-bordered>tfoot>tr>th,
+            .table-bordered>tfoot>tr>td .table-bordered>tbody>tr>th,
+            .table-bordered>thead>tr>th,
+            .table-bordered>thead>tr>td,
+            .table-bordered>tbody>tr>td {
+              border: 1px inset #dddddd
+            }
+
+            .fileSummary {
+                background-color: #f5f5f5;
+            }
+            /* Only horizontal lines. */
+            .migration-issues-table.table-bordered > thead > tr > th,
+            .migration-issues-table.table-bordered > tbody > tr > td {
+                border-left-style: none;
+                border-right-style: none;
+            }
+
+            /* Light yellow bg for the issue info box. */
+            .hint-detail-panel > .panel-heading {
+                border-color: #c2c2c2;
+                background-color: #fbf4b1;
+            }
+
+            .hint-detail-panel {
+                border-color: #c2c2c2;
+                background-color: #fffcdc;
+            }
+            /* Reduce the padding, default is too big. */
+            .hint-detail-panel > .panel-body { padding-bottom: 0; }
+
+            /* Colors of various effort levels. */
+            /* Commented out for now (jsight - 2016/02/15)
+            tr.problemSummary.effortINFO td.level { color: #1B540E; }
+            tr.problemSummary.effortTRIVIAL td.level { color: #50A40E; }
+            tr.problemSummary.effortCOMPLEX td.level { color: #0065AC; }
+            tr.problemSummary.effortREDESIGN td.level { color: #C67D00; }
+            tr.problemSummary.effortARCHITECTURAL td.level { color: #C42F0E; }
+            tr.problemSummary.effortUNKNOWN td.level { color: #C42F0E; }
+            */
+        </style>
+
+        <script src="resources/js/jquery-3.3.1.min.js"></script>
+    </head>
+    <body role="document" class="migration-issues">
+        <!-- Navbar -->
+        <div id="main-navbar" class="navbar navbar-inverse navbar-fixed-top">
+            <div class="wu-navbar-header navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <span class="wu-navbar-header">
+<strong class="wu-navbar-header">Tackle Analysis</strong>
+<img align="right" class="wu-navbar-header" src="resources/img/TACKLE/brand-horizontal.png" />            </span>            </div>
+
+                <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav">
+            <li class="">
+                <a href="../index.html"><i class="glyphicon glyphicon-home"></i> All Applications</a>
+            </li>
+
+
+
+                <li class="">
+                    <a href="report_index_spring_to_quarkus_todo.html">
+                        <i class="glyphicon glyphicon-dashboard"></i>
+                      Dashboard
+                    </a>
+                </li>
+
+
+                <li class="active">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-warning-sign"></i>
+                      Issues
+                    </a>
+                </li>
+
+
+                <li class="">
+                    <a href="ApplicationDetails_spring_to_quarkus_todo.html">
+                        <i class="glyphicon glyphicon-th-list"></i>
+                      Application Details
+                    </a>
+                </li>
+
+
+                <li class="">
+                    <a href="techReport_spring_to_quarkus_todo.html">
+                        <i class="fa fa-rocket"></i>
+                      Technologies
+                    </a>
+                </li>
+
+
+                <li class="">
+                    <a href="dependency_report_spring_to_quarkus_todo.html">
+                        <i class="glyphicon glyphicon-retweet"></i>
+                      Dependencies
+                    </a>
+                </li>
+
+
+                <li class="">
+                    <a href="jpa_spring_to_quarkus_todo.html">
+                        <i class="glyphicon jpa-nav-logo"></i>
+                      JPA
+                    </a>
+                </li>
+
+
+                <li class="">
+                    <a href="ignoredfiles_spring_to_quarkus_todo.html">
+                        <i class="glyphicon glyphicon-eye-close"></i>
+                      Ignored Files
+                    </a>
+                </li>
+
+
+                <li class="">
+                    <a href="about_spring_to_quarkus_todo.html">
+                        <i class="fa fa-question-circle"></i>
+                      About
+                    </a>
+                </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="#" class="feedback-nav-btn jiraFeedbackTrigger"><i class="glyphicon glyphicon-comment"></i> Send Feedback </a>
+</li>
+
+
+    <script type="text/javascript" src="https://issues.redhat.com/s/f215932e68571747ac58d0f5d554396f-T/en_US-r7luaf/6346/82/1.4.16/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&amp;collectorId=8b9e338b"></script>
+
+    <script type="text/javascript">
+
+    var FEEDBACK_JS_ADDED = false;
+    var FEEDBACK_FORM_TRIGGER = null;
+
+    function displayFeedbackForm() {
+        FEEDBACK_FORM_TRIGGER();
+    }
+
+    window.ATL_JQ_PAGE_PROPS = {
+        "triggerFunction": function(showCollectorDialog) {
+            FEEDBACK_FORM_TRIGGER = showCollectorDialog;
+        }
+    };
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+            jQuery(".jiraFeedbackTrigger").click(function(e) {
+                e.preventDefault();
+                displayFeedbackForm();
+            });
+    });
+    </script>
+    </ul>
+    <script type="text/javascript">
+        var script   = document.createElement("script");
+        script.type  = "text/javascript";
+            script.src   = "resources/js/navbar.js";
+        document.body.appendChild(script);
+    </script>
+                </div><!-- /.nav-collapse -->
+        </div>
+        <!-- / Navbar -->
+
+        <div class="container-fluid" role="main">
+            <div class="row">
+                <div class="page-header page-header-no-border">
+                    <h1>
+                        <div class="main">Issues
+                        <i class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement=right title="This report provides a concise summary of all issues sorted by category."></i>
+                        </div>
+                            <div class="path">project</div>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="container-fluid theme-showcase" role="main">
+                    <!-- HEAD -->
+                        <table class="table table-bordered table-condensed tablesorter migration-issues-table">
+                            <thead>
+                                <tr class="tablesorter-ignoreRow" style="background: #337ab7;color: #FFFFFF; font-size: 14pt;">
+                                    <td style="border: 0px; padding: 10px 15px"><b>Migration Mandatory</b></td>
+                                    <td style="border: 0px"></td>
+                                    <td style="border: 0px"></td>
+                                    <td style="border: 0px"></td>
+                                    <td style="border: 0px"></td>
+                                </tr>
+                                <tr style="background: rgb(212, 230, 233);">
+                                    <th class="sortable">Issue by Category</th>
+                                    <th class="sortable-right text-right">Incidents Found</th>
+                                    <th class="sortable-right text-right">Story Points per Incident</th>
+                                    <th>Level of Effort</th>
+                                    <th class="sortable-right text-right">Total Story Points</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr class="tablesorter-ignoreRow" style="background: rgb(212, 230, 233);">
+                                    <td style="border: 0px"></td>
+                                    <td style="border: 0px" class="text-right">19</td>
+                                    <td style="border: 0px"></td>
+                                    <td style="border: 0px"></td>
+                                    <td style="border: 0px" class="text-right">24</td>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+    <tr class="problemSummary effortTRIVIAL">
+        <td>
+            <a href="#" class="toggle">
+                Replace Spring datasource property key/value pairs with Quarkus properties
+            </a>
+        </td>
+        <td class="text-right">4</td>
+        <td class="text-right">1</td>
+        <td class="level">Trivial change or 1-1 library swap</td>
+        <td class="text-right">4</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="a91bacbe-01c6-43db-a7db-40c1bda554bc">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortTRIVIAL">
+        <td>
+            <a href="#" class="toggle">
+                Replace Spring OpenAPI endpoint mapping
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">1</td>
+        <td class="level">Trivial change or 1-1 library swap</td>
+        <td class="text-right">1</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="e43a65c3-9d48-47b2-b1ef-b5b1f012e5d1">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortTRIVIAL">
+        <td>
+            <a href="#" class="toggle">
+                Replace Spring Health endpoint mapping
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">1</td>
+        <td class="level">Trivial change or 1-1 library swap</td>
+        <td class="text-right">1</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="eeecec1b-1f74-4da9-8853-3775fe87f791">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortTRIVIAL">
+        <td>
+            <a href="#" class="toggle">
+                Replace Spring Swagger endpoint mapping
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">1</td>
+        <td class="level">Trivial change or 1-1 library swap</td>
+        <td class="text-right">1</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="d3616de0-94cb-4feb-af7b-822d469e0ba0">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortTRIVIAL">
+        <td>
+            <a href="#" class="toggle">
+                Replace Spring JPA Hiberate property with Quarkus property
+            </a>
+        </td>
+        <td class="text-right">2</td>
+        <td class="text-right">1</td>
+        <td class="level">Trivial change or 1-1 library swap</td>
+        <td class="text-right">2</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="3d26420a-753b-4709-9dc6-f2b2e9b08c01">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortTRIVIAL">
+        <td>
+            <a href="#" class="toggle">
+                Replace Spring Prometheus Metrics endpoint mapping
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">1</td>
+        <td class="level">Trivial change or 1-1 library swap</td>
+        <td class="text-right">1</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="08bb692c-58b3-4105-b78e-fc7624efb239">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortUNKNOWN">
+        <td>
+            <a href="#" class="toggle">
+                Replace the spring-boot-maven-plugin dependency
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">2</td>
+        <td class="level">Unknown effort</td>
+        <td class="text-right">2</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="4594610d-04c2-4516-b3a1-ff6fbc748e11">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortTRIVIAL">
+        <td>
+            <a href="#" class="toggle">
+                Remove spring-boot-devtools dependency
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">1</td>
+        <td class="level">Trivial change or 1-1 library swap</td>
+        <td class="text-right">1</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="ccef8262-26cb-40e0-ab9c-8508aa0fa41c">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortTRIVIAL">
+        <td>
+            <a href="#" class="toggle">
+                Replace the &#39;postgresql&#39; dependency with Quarkus &#39;quarkus-jdbc-postgresql&#39; extension
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">1</td>
+        <td class="level">Trivial change or 1-1 library swap</td>
+        <td class="text-right">1</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="c1163d7e-e924-47cd-afa6-bf50f9107c90">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortREDESIGN">
+        <td>
+            <a href="#" class="toggle">
+                Replace the Spring Boot Actuator dependency with Quarkus Smallrye Health extension
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">5</td>
+        <td class="level">Requires re-design or library change</td>
+        <td class="text-right">5</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="fce9e29e-ce07-4a52-ae1b-81a4276615d5">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortTRIVIAL">
+        <td>
+            <a href="#" class="toggle">
+                Replace the &#39;micrometer-registry-prometheus&#39; dependency with Quarkus &#39;quarkus-micrometer-registry-prometheus&#39; extension
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">1</td>
+        <td class="level">Trivial change or 1-1 library swap</td>
+        <td class="text-right">1</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="8a81ba50-6841-4b3b-8974-4e71c94481fc">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortTRIVIAL">
+        <td>
+            <a href="#" class="toggle">
+                Replace the Spring Web artifact with Quarkus &#39;spring-web&#39; extension
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">1</td>
+        <td class="level">Trivial change or 1-1 library swap</td>
+        <td class="text-right">1</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="37b20f78-120d-4a65-b58a-1fa735334241">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortTRIVIAL">
+        <td>
+            <a href="#" class="toggle">
+                Replace the Spring Parent POM with Quarkus BOM
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">1</td>
+        <td class="level">Trivial change or 1-1 library swap</td>
+        <td class="text-right">1</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="c25c54d2-3543-44dd-94dc-cb4cc1c97844">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortTRIVIAL">
+        <td>
+            <a href="#" class="toggle">
+                Replace the SpringBoot Data JPA artifact with Quarkus &#39;spring-data-jpa&#39; extension
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">1</td>
+        <td class="level">Trivial change or 1-1 library swap</td>
+        <td class="text-right">1</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="43a8ca51-edab-4eea-ae56-ebeec4ee0d43">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortTRIVIAL">
+        <td>
+            <a href="#" class="toggle">
+                Remove the SpringBoot @SpringBootApplication annotation
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">1</td>
+        <td class="level">Trivial change or 1-1 library swap</td>
+        <td class="text-right">1</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="1504269a-42b0-46ef-a1c0-5dc912ed1729">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered table-condensed tablesorter migration-issues-table">
+                            <thead>
+                                <tr class="tablesorter-ignoreRow" style="background: #337ab7;color: #FFFFFF; font-size: 14pt;">
+                                    <td style="border: 0px; padding: 10px 15px"><b>Migration Potential</b></td>
+                                    <td style="border: 0px"></td>
+                                    <td style="border: 0px"></td>
+                                    <td style="border: 0px"></td>
+                                    <td style="border: 0px"></td>
+                                </tr>
+                                <tr style="background: rgb(212, 230, 233);">
+                                    <th class="sortable">Issue by Category</th>
+                                    <th class="sortable-right text-right">Incidents Found</th>
+                                    <th class="sortable-right text-right">Story Points per Incident</th>
+                                    <th>Level of Effort</th>
+                                    <th class="sortable-right text-right">Total Story Points</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr class="tablesorter-ignoreRow" style="background: rgb(212, 230, 233);">
+                                    <td style="border: 0px"></td>
+                                    <td style="border: 0px" class="text-right">5</td>
+                                    <td style="border: 0px"></td>
+                                    <td style="border: 0px"></td>
+                                    <td style="border: 0px" class="text-right">25</td>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+    <tr class="problemSummary effortREDESIGN">
+        <td>
+            <a href="#" class="toggle">
+                Spring component spring-boot-starter-validation requires investigation
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">5</td>
+        <td class="level">Requires re-design or library change</td>
+        <td class="text-right">5</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="11518feb-caa4-4d03-b464-a50dab0f40cd">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortREDESIGN">
+        <td>
+            <a href="#" class="toggle">
+                Spring component springdoc-openapi-starter-webmvc-ui requires investigation
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">5</td>
+        <td class="level">Requires re-design or library change</td>
+        <td class="text-right">5</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="cb70c5e0-915d-4d83-9eda-e281ae15d3f1">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortREDESIGN">
+        <td>
+            <a href="#" class="toggle">
+                Spring component spring-boot-starter-parent requires investigation
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">5</td>
+        <td class="level">Requires re-design or library change</td>
+        <td class="text-right">5</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="67af751a-ca66-434d-a20c-c7298c6d747f">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortREDESIGN">
+        <td>
+            <a href="#" class="toggle">
+                Spring component spring-boot-maven-plugin requires investigation
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">5</td>
+        <td class="level">Requires re-design or library change</td>
+        <td class="text-right">5</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="3bc47bff-07e0-45c4-8cb0-743815b1d32f">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortREDESIGN">
+        <td>
+            <a href="#" class="toggle">
+                Spring component spring-boot-starter-test requires investigation
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">5</td>
+        <td class="level">Requires re-design or library change</td>
+        <td class="text-right">5</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="e2940109-0e31-40af-af72-b8857830d996">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered table-condensed tablesorter migration-issues-table">
+                            <thead>
+                                <tr class="tablesorter-ignoreRow" style="background: #337ab7;color: #FFFFFF; font-size: 14pt;">
+                                    <td style="border: 0px; padding: 10px 15px"><b>Information</b></td>
+                                    <td style="border: 0px"></td>
+                                    <td style="border: 0px"></td>
+                                    <td style="border: 0px"></td>
+                                    <td style="border: 0px"></td>
+                                </tr>
+                                <tr style="background: rgb(212, 230, 233);">
+                                    <th class="sortable">Issue by Category</th>
+                                    <th class="sortable-right text-right">Incidents Found</th>
+                                    <th class="sortable-right text-right">Story Points per Incident</th>
+                                    <th>Level of Effort</th>
+                                    <th class="sortable-right text-right">Total Story Points</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr class="tablesorter-ignoreRow" style="background: rgb(212, 230, 233);">
+                                    <td style="border: 0px"></td>
+                                    <td style="border: 0px" class="text-right">8</td>
+                                    <td style="border: 0px"></td>
+                                    <td style="border: 0px"></td>
+                                    <td style="border: 0px" class="text-right">0</td>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+    <tr class="problemSummary effortINFO">
+        <td>
+            <a href="#" class="toggle">
+                Maven POM (pom.xml)
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">0</td>
+        <td class="level">Info</td>
+        <td class="text-right">0</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="1bd7ff8e-373b-4f45-a50d-a62ac4f21a1f">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortINFO">
+        <td>
+            <a href="#" class="toggle">
+                Spring datasource properties detected
+            </a>
+        </td>
+        <td class="text-right">2</td>
+        <td class="text-right">0</td>
+        <td class="level">Info</td>
+        <td class="text-right">0</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="cf386058-9ca7-47f9-927a-45eaef1f956f">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortINFO">
+        <td>
+            <a href="#" class="toggle">
+                Application properties file detected
+            </a>
+        </td>
+        <td class="text-right">2</td>
+        <td class="text-right">0</td>
+        <td class="level">Info</td>
+        <td class="text-right">0</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="ac772737-b18b-417b-a4d7-e7ed015bbbc0">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortINFO">
+        <td>
+            <a href="#" class="toggle">
+                Embedded library - Spring Boot Actuator
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">0</td>
+        <td class="level">Info</td>
+        <td class="text-right">0</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="dfc02dea-4da4-46d0-a49c-625407e952a4">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortINFO">
+        <td>
+            <a href="#" class="toggle">
+                Embedded Spring Data JPA
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">0</td>
+        <td class="level">Info</td>
+        <td class="text-right">0</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="874577ac-0f5c-4a8f-9a63-bd3c2232c684">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr class="problemSummary effortINFO">
+        <td>
+            <a href="#" class="toggle">
+                Embedded framework - Spring Web
+            </a>
+        </td>
+        <td class="text-right">1</td>
+        <td class="text-right">0</td>
+        <td class="level">Info</td>
+        <td class="text-right">0</td>
+    </tr>
+    <tr class="tablesorter-childRow bg-info" data-summary-id="db1d3672-33e5-4f34-a47f-6e25f81eaf08">
+        <td colspan="5" style="display: none;" class="table-inner-wrapping-td">
+            <table class="table-inner table table-bordered table-condensed migration-issues-table">
+                <thead>
+                    <!-- First rows used to calculate columns width -->
+                    <tr style="visibility: collapse;"><th></th><th></th><th></th><th></th><th></th></tr>
+                    <tr class="bg-info">
+                        <th><div class="indent"><strong>File</strong></div></th>
+                        <th class="text-right"><strong>Incidents Found</strong></th>
+                        <th colspan="3"><strong>Hint</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+                            </tbody>
+                        </table>
+                    <!-- 4c47fc7cb... Several style fixes to make the reports more consistent -->
+                </div>
+            </div>
+
+<div style="text-align: left; font-size: small; color: gray; font-style: italic;">Page generated: Apr 23, 2023, 9:50:53 PM</div>        </div>
+
+
+        <script src="resources/js/jquery-ui.min.js"></script>
+        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/jquery.tablesorter.min.js"></script>
+        <script src="resources/js/jquery.tablesorter.widgets.min.js"></script>
+        <script src="resources/libraries/handlebars/handlebars.4.0.5.min.js"></script>
+
+        <!#-- We are using short variable names because they repeat a lot in the generated HTML
+              and using short reduces the file sizes significantly.
+
+              {l} - label
+              {oc} - occurences
+              {h} - href
+              {t} - link title
+
+              The actual data are generated lower into MIGRATION_ISSUES_DETAILS[] .
+        -->
+        <script id="detail-row-template" type="text/x-handlebars-template">
+            {{#each problemSummaries}}
+                {{#each files}}
+                    <tr class="fileSummary tablesorter-childRow fileSummary_id_{{../problemSummaryID}}">
+                        <td>
+                            <div class="indent">
+                                {{{l}}}
+                            </div>
+                        </td>
+                        <td class="text-right">
+                            {{oc}}
+                        </td>
+
+                        {{#if @first}}
+                            <td colspan="3" rowspan="{{../files.length}}">
+                                <div class="panel panel-default hint-detail-panel">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title pull-left">Issue Detail: {{../issueName}}</h4>
+                                        {{#if ../ruleID}}
+                                            <div class="pull-right">
+                                                <a class="sh_url" title="{{../ruleID}}" href="windup_ruleproviders.html#{{../ruleID}}">Show Rule</a>
+                                            </div>
+                                        {{/if}}
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="panel-body">
+                                        {{{../description}}}
+                                    </div>
+
+                                    {{#if ../resourceLinks}}
+                                        <div class="panel-body">
+                                            <ul>
+                                                {{#each ../resourceLinks}}
+                                                    <li><a href="{{h}}" target="_blank">{{t}}</a></li>
+                                                {{/each}}
+                                            </ul>
+                                        </div>
+                                    {{/if}}
+                                </div>
+                            </td>
+                        {{/if}}
+                    </tr>
+                {{/each}}
+            {{/each}}
+        </script>
+
+        <script src="resources/js/windup-migration-issues.js"></script>
+        <script>$(document).ready(function(){$('[data-toggle="tooltip"]').tooltip();});</script>
+
+    </body>
+</html>
